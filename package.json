@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node src/server.js",
-    "test": "mocha tests/**/*.test.js --timeout 10000"
-  },
+ "scripts": {
+  "start": "node app.js",
+  "test-external": "mocha tests/rest/external/transferexternal.test.js --timeout 10000"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliodelimas/pgats-2025-02-base.git"
