@@ -29,6 +29,8 @@
   "devDependencies": {
     "chai": "^4.5.0",
     "mocha": "^11.7.2",
-    "supertest": "^7.1.4"
+    "mocha-junit-reporter": "^2.2.1",
+    "supertest": "^7.1.4",
+    "wait-on": "^9.0.1"
   }
 }
