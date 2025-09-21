@@ -29,5 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run software tests
         run: npm test --silent
+
+      - name: Subir API
+        run: npm start &
+      
+      - name: Esperar API responder
+        run: Sleep 
+
+      - name: Rodar testes externos de API via HTTP
+        run: npm run test-external
