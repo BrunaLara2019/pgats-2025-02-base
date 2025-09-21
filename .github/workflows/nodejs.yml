@@ -1,4 +1,4 @@
-name: CI
+name: Teste API External
 
 on:
   push:
@@ -29,14 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Rodar testes internos
       - name: Run software tests
-        run: npm test --silent
+        run: npm test 
 
-      - name: Subir API
-        run: npm start &
-      
-      - name: Esperar API responder
-        run: sleep 5
+      # Removido npm start e sleep
+      # Supertest já usa o app diretamente, então não precisa subir servidor externo
 
-      - name: Rodar testes externos de API via HTTP
+      # Rodar testes externos via HTTP com Supertest
+      - name: Rodar testes externos de API via Supertest
         run: npm run test-external
