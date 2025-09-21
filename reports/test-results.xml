@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.083" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-09-21T23:31:08" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="API REST - Checkout" timestamp="2025-09-21T23:31:08" tests="3" file="C:\Users\bruna\pgats-2025-02-base\tests\rest\external\transferExternal.test.js" time="0.049" failures="0">
+    <testcase name="API REST - Checkout Deve bloquear checkout sem token" time="0.003" classname="Deve bloquear checkout sem token">
+    </testcase>
+    <testcase name="API REST - Checkout Deve falhar se o carrinho estiver vazio" time="0.006" classname="Deve falhar se o carrinho estiver vazio">
+    </testcase>
+    <testcase name="API REST - Checkout Deve realizar checkout com sucesso" time="0.005" classname="Deve realizar checkout com sucesso">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "start": "node app.js",
-  "test-external": "mocha tests/rest/external/*.test.js --timeout 10000"
+"scripts": {
+  "test-external": "mocha tests/rest/external/transferExternal.test.js --timeout 10000 --reporter mocha-multi-reporters --reporter-options configFile=reporter-config.json",
+  "generate-report": "marge mochawesome-report/mochawesome.json --reportDir mochawesome-report --reportFilename index.html"
 },
   "repository": {
     "type": "git",

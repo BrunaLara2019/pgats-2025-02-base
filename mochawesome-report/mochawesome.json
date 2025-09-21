@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-21T23:31:08.557Z",
+    "end": "2025-09-21T23:31:08.640Z",
+    "duration": 83,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a52cf4fd-7e59-4a42-942f-208562c2266f",
+      "title": "",
+      "fullFile": "C:\\Users\\bruna\\pgats-2025-02-base\\tests\\rest\\external\\transferExternal.test.js",
+      "file": "\\tests\\rest\\external\\transferExternal.test.js",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook in \"{root}\"",
+          "fullTitle": "\"before all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 28,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "const chai = await import('chai');\nexpect = chai.expect;",
+          "err": {},
+          "uuid": "68cbb4c3-785d-4cb9-9a05-6ba9c9155181",
+          "parentUUID": "a52cf4fd-7e59-4a42-942f-208562c2266f",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f30a3d34-3ebb-4fce-a0f8-854159982b3d",
+          "title": "API REST - Checkout",
+          "fullFile": "C:\\Users\\bruna\\pgats-2025-02-base\\tests\\rest\\external\\transferExternal.test.js",
+          "file": "\\tests\\rest\\external\\transferExternal.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"API REST - Checkout\"",
+              "fullTitle": "API REST - Checkout \"before all\" hook in \"API REST - Checkout\"",
+              "timedOut": false,
+              "duration": 33,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Ignora erro se usuário já estiver registrado\nawait request(app)\n  .post('/api/users/register')\n  .send({ name: 'Teste', email: 'usuario@teste.com', password: 'senha123' })\n  .catch(() => {});\nconst res = await request(app)\n  .post('/api/users/login')\n  .send({ email: 'usuario@teste.com', password: 'senha123' });\ntoken = res.body.token;\nexpect(token).to.be.a('string');",
+              "err": {},
+              "uuid": "43b77474-656e-46e3-abcd-3a5dc97515d0",
+              "parentUUID": "f30a3d34-3ebb-4fce-a0f8-854159982b3d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve bloquear checkout sem token",
+              "fullTitle": "API REST - Checkout Deve bloquear checkout sem token",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const res = await request(app)\n  .post(\"/api/checkout\")\n  .send({ items: [{ productId: 1, price: 50, qty: 2 }], freight: 20, paymentMethod: \"pix\" });\nexpect(res.status).to.equal(401);\nexpect(res.body.error).to.equal(\"Token de autenticação não informado\");",
+              "err": {},
+              "uuid": "6bb3c0a5-175f-4d05-bd8f-f9e4ef214a93",
+              "parentUUID": "f30a3d34-3ebb-4fce-a0f8-854159982b3d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve falhar se o carrinho estiver vazio",
+              "fullTitle": "API REST - Checkout Deve falhar se o carrinho estiver vazio",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const res = await request(app)\n  .post(\"/api/checkout\")\n  .set(\"Authorization\", `Bearer ${token}`)\n  .send({ items: [], freight: 20, paymentMethod: \"pix\" });\nexpect(res.status).to.equal(200);\nexpect(res.body).to.have.property('valorFinal');\nexpect(res.body.valorFinal).to.be.a('number');",
+              "err": {},
+              "uuid": "1c1c4dc4-e228-4782-8624-96057e8296f0",
+              "parentUUID": "f30a3d34-3ebb-4fce-a0f8-854159982b3d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve realizar checkout com sucesso",
+              "fullTitle": "API REST - Checkout Deve realizar checkout com sucesso",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const res = await request(app)\n  .post(\"/api/checkout\")\n  .set(\"Authorization\", `Bearer ${token}`)\n  .send({ items: [{ productId: 1, quantity: 2 }], freight: 20, paymentMethod: \"pix\" });\nexpect(res.status).to.equal(200);\nexpect(res.body).to.have.property(\"valorFinal\");\nexpect(res.body.valorFinal).to.be.a('number');",
+              "err": {},
+              "uuid": "468d846d-4703-43bc-b80a-6fc772ab985b",
+              "parentUUID": "f30a3d34-3ebb-4fce-a0f8-854159982b3d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6bb3c0a5-175f-4d05-bd8f-f9e4ef214a93",
+            "1c1c4dc4-e228-4782-8624-96057e8296f0",
+            "468d846d-4703-43bc-b80a-6fc772ab985b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "reportFilename": "mochawesome",
+        "quiet": true,
+        "json": true,
+        "html": false
+      },
+      "version": "6.3.0"
+    }
+  }
+}
