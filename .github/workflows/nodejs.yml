@@ -36,7 +36,7 @@ jobs:
         run: npm start &
       
       - name: Esperar API responder
-        run: Sleep 
+        run: Sleep 5
 
       - name: Rodar testes externos de API via HTTP
         run: npm run test-external
